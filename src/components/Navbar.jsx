@@ -28,6 +28,19 @@ align-items:center;
 justify-content:center;
 
 `
+const Active = styled.div`
+height:10px;
+width:10px;
+background:#3D86BF;
+border-top-left-radius:50%;
+border-top-right-radius:50%;
+border-bottom-right-radius:0%;
+border-bottom-left-radius:0%;
+margin-bottom:-60px;
+opacity:0;
+transition:1.5s ease;
+`
+
 const LinkBox = styled.div`
 display:flex;
 flex-direction:column;
@@ -40,14 +53,13 @@ margin-right:10px;
 margin-left:10px;
 
 
-`
-const Active = styled.div`
-height:10px;
-width:10px;
-background:#394E5D;
-border-radius:50%;
-margin-bottom:-60px;
-display:none;
+
+&:hover{
+	${Active}{
+		opacity:1;
+	}
+}
+
 `
 
 
@@ -74,6 +86,9 @@ align-items:center;
 cursor:pointer;
 position:fixed;
 text-decoration:none;
+
+
+}
 `
 
 const Logo = styled.a`
@@ -83,44 +98,42 @@ background:url(${LogoIcon});
 cursor:pointer;
 `
 
-const Navbar = ()=>{
 
-   const [click, setClick] = useState(true)
-    const handleClick = () => setClick(!click)
 
-    const closeMenu = () => setClick(false)
+
+const Navbar = ({toHome,toProducts,toBlog,toContact})=>{
 
 
 	return(
 		<NavbarContainer>
 			<LinkContainer>
-				<LinkBox click={click}>
-					<LinkText href="#Home">
+				<LinkBox  onClick={()=>toHome()}>
+					<LinkText href="#Home"  >
 						Home
 					</LinkText>
-					<Active/>
+					<Active />
 				</LinkBox>
 
-				<LinkBox>
+				<LinkBox onClick={()=>toProducts()}>
 					<LinkText href="#Products">
 						Products
 					</LinkText>
-					<Active/>
+					<Active />
 				</LinkBox>
 				
-				<LogoBox>
+				<LogoBox onClick={()=>toHome()}>
 					<Logo href="/"/>
 				</LogoBox>
 				
-				<LinkBox>
+				<LinkBox onClick={()=>toBlog()}>
 					<LinkText href="#Blog">
 						Blog
 					</LinkText>
-					<Active/>
+					<Active />
 				</LinkBox>
 
-				<LinkBox>
-					<LinkText href="#Contact">
+				<LinkBox onClick={()=>toContact()}>
+					<LinkText href="#Contact" >
 						Contact
 					</LinkText>
 					<Active/>

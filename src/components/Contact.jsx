@@ -4,11 +4,13 @@ import styled from "styled-components"
 
 const ContactPageContainer = styled.article`
 height:100vh;
-background:purple;`
+background:purple;
+scroll-snap-align: start;
+`
 
-const Contact = ()=>{
+const Contact = ({titleRef4})=>{
 	return(
-		<ContactPageContainer />
+		<ContactPageContainer ref={titleRef4}/>
 		)
 }
 

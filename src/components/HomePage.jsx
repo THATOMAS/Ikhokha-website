@@ -8,6 +8,7 @@ const image = require('../assets/56256.png')
 const HomePageContainer = styled.article`
 height:100vh;
 // background:red;
+scroll-snap-align: start;
 `
 
 const PageWrapper = styled.div`
@@ -54,9 +55,9 @@ width:384px;
 background:url(${image})
 `
 
-const HomePage = ()=>{
+const HomePage = ({titleRef1})=>{
 	return(
-		<HomePageContainer>
+		<HomePageContainer ref={titleRef1}>
 			<PageWrapper>
 				<PageInfoBox>
 					<Heading>

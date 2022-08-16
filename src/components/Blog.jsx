@@ -4,11 +4,13 @@ import styled from "styled-components"
 
 const BlogContainer = styled.article`
 height:100vh;
-background:blue;`
+background:blue;
+scroll-snap-align: start;
+`
 
-const Blog = ()=>{
+const Blog = ({titleRef3})=>{
 	return(
-		<BlogContainer />
+		<BlogContainer ref={titleRef3}/>
 		)
 }
 
