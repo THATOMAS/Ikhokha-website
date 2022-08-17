@@ -122,7 +122,7 @@ const Navbar = ({toHome,toProducts,toBlog,toContact})=>{
 				</LinkBox>
 				
 				<LogoBox onClick={()=>toHome()}>
-					<Logo href="/"/>
+					<Logo href="#Home"/>
 				</LogoBox>
 				
 				<LinkBox onClick={()=>toBlog()}>

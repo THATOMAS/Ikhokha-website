@@ -19,7 +19,7 @@ align-items:center;
 `
 const PageInfoBox = styled.div`
 height:75%;
-width:50%;
+width:60%;
 display:flex;
 flex-direction:column;
 // background:red;
@@ -27,24 +27,35 @@ align-items:center;
 justify-content:center
 `
 
+const PageInfoBoxWrapper = styled.div`
+width:503px;
+height:fit-content;
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+`
+
 const Heading = styled.h1`
 font-family:Montserrat;
 font-size:46px;
 margin-bottom:57px;
 font-weight:600;
+color:#394E5D;
+margin-bottom:19px;
 `
 
 const Info = styled.p`
 font-family:Montserrat;
 font-size:27px;
-
+color:#394E5D;
+line-height:27px;
 `
 
 const ImageBox = styled.div`
 height:75%;
-width:50%;
+width:40%;
 display:flex;
-align-items:center;
+align-items:flex-start;
 justify-content:center;
 flex-direction:column;
 // background:blue;
@@ -60,11 +71,13 @@ const HomePage = ({titleRef1})=>{
 		<HomePageContainer ref={titleRef1}>
 			<PageWrapper>
 				<PageInfoBox>
-					<Heading>
-						Start new... Today!
-					</Heading>
-					<Info>Lorem ipsy things yebo mhmmm its nice dont pay dijo quick hawu!!!
-					</Info>
+					<PageInfoBoxWrapper>
+						<Heading>
+							Start new... Today!
+						</Heading>
+						<Info>Vivamus vestibulum elit efficitur, elementum sapien a, aliquet ipsum
+						</Info>
+					</PageInfoBoxWrapper>
 				</PageInfoBox>
 				<ImageBox>
 					<Image/>

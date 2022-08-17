@@ -12,6 +12,7 @@ const LogoIcon = require("./assets/Logo.png")
 
 const WebPage = styled.section`
 height:fit-content;
+scroll-snap-align: start;
 
 `
 
@@ -26,21 +27,21 @@ const titleRef4 = useRef();
 
 
   const toHome = () =>{
-    titleRef1.current.scrollIntoView({"behaivour":"smooth"});
+    titleRef1.current.scrollIntoView({behavior:"smooth"});
   }
 
   const toProducts = ()=> {
-    titleRef2.current.scrollIntoView({"behaivour":"smooth"});
+    titleRef2.current.scrollIntoView({behavior:"smooth"});
   }
 
 
   const toBlog =()=> {
-    titleRef3.current.scrollIntoView({"behaivour":"smooth"});
+    titleRef3.current.scrollIntoView({behavior:"smooth"});
   }
 
 
   const toContact =() => {
-     titleRef4.current.scrollIntoView({"behaivour":"smooth"});
+     titleRef4.current.scrollIntoView({behavior:"smooth"});
   }
 
 	return(
