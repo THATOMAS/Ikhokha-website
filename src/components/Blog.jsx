@@ -77,6 +77,7 @@ margin-top:20px;
 display:flex;
 justify-content:center;
 align-items:center;
+margin-top:80px;
 `
 
 const ReadMoreText = styled.p`
@@ -96,7 +97,7 @@ flex-direction:column;
 
 
 const BlogBoxRowOne = styled.div`
-height:200px;
+height:fit-content;
 width:100%;
 // background:blue;
 margin-bottom:10px;
@@ -107,12 +108,21 @@ flex-wrap:no-wrap;
 
 const SingleBlogBox = styled.div`
 width:282px;
-height:200px;
+height:fit-content;
 // background:red;
-margin-right:5px;
+margin:10px;
 display:flex;
 flex-direction:column;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 2px 16px #00000029;
+border-radius: 4px;
+opacity: 1;
+cursor:pointer;
+transition: 0.1s ease-in-out all;
 
+&:hover{
+	transform:scale(1.1)
+}
 `
 
 const BlogImage = styled.div`
@@ -125,10 +135,16 @@ const Title = styled.h4`
 font-weight:600;
 font-size:20px;
 font-family:Montserrat;
-margin-top:24px;
-margin-bottom:24px;
+margin-top:6px;
+margin-bottom:-5px;
 color: #394E5D;
 opacity: 1;
+`
+
+const BlogText = styled.p`
+font-family:Montserrat;
+font-size:16px;
+color: #394E5D;
 `
 
 const BlogBoxRowTwo = styled.div`
@@ -171,6 +187,7 @@ const Blog = ({titleRef3})=>{
 									<SingleBlogBox key={index}>
 										<BlogImage image={blog.image}/>
 										<Title>{blog.Title} #{index+1}</Title>
+										<BlogText>{blog.info}</BlogText>
 									</SingleBlogBox>
 									)
 							})}
@@ -178,7 +195,11 @@ const Blog = ({titleRef3})=>{
 						<BlogBoxRowTwo seemore={seemore}>
 							{RowTwo.map((blog,index)=>{
 								return(
-									<SingleBlogBox key={index}/>
+									<SingleBlogBox key={index}>
+										<BlogImage image={blog.image}/>
+										<Title>{blog.Title} #{index+5}</Title>
+										<BlogText>{blog.info}</BlogText>
+									</SingleBlogBox>
 									)
 							})}
 						</BlogBoxRowTwo >
