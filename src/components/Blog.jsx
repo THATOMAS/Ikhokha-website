@@ -2,13 +2,14 @@ import React,{useState} from "react"
 import styled from "styled-components"
 import {Logos} from "./Logos"
 import {RowOne,RowTwo} from "./BlogData"
+import {SingleBlogRowOne,SingleBlogRowTwo} from "./SingleBlog"
 
 const BlogContainer = styled.article`
 height:100vh;
 // background:blue;
 scroll-snap-align: start;
 display:flex;
-
+// opacity:0.45;
 `
 
 const PageWrapper = styled.div`
@@ -106,6 +107,7 @@ flex-direction:row;
 flex-wrap:no-wrap;
 `
 
+
 const SingleBlogBox = styled.div`
 width:282px;
 height:fit-content;
@@ -120,15 +122,24 @@ opacity: 1;
 cursor:pointer;
 transition: 0.1s ease-in-out all;
 
-&:hover{
-	transform:scale(1.1)
+// &:hover{
+// 	transform:scale(1.1)
 }
+
+
+
+
 `
+
+
 
 const BlogImage = styled.div`
 height:144px;
 width:100%;
-background: url(${props=>props.image})
+background: url(${props=>props.image});
+display:flex;
+align-items:flex-start;
+justify-content:flex-end;
 `
 
 const Title = styled.h4`
@@ -161,10 +172,12 @@ flex-wrap:no-wrap;
 const Blog = ({titleRef3})=>{
 
 	const [seemore,setSeemore] = useState(true)
-
 	const readmore = ()=>{
 		setSeemore(!seemore)
 	}
+
+
+ 
 
 	return(
 		<BlogContainer ref={titleRef3}>
@@ -182,23 +195,19 @@ const Blog = ({titleRef3})=>{
 				<BlogBoxContainer>
 					<BlogBoxWrapper>
 						<BlogBoxRowOne>
-							{RowOne.map((blog,index)=>{
+							{RowOne.map((blog)=>{
 								return(
-									<SingleBlogBox key={index}>
-										<BlogImage image={blog.image}/>
-										<Title>{blog.Title} #{index+1}</Title>
-										<BlogText>{blog.info}</BlogText>
+									<SingleBlogBox key={blog.id} >
+										<SingleBlogRowOne id={blog.id} image={blog.image} title={blog.Title} info={blog.info}/>
 									</SingleBlogBox>
 									)
 							})}
 						</BlogBoxRowOne>
 						<BlogBoxRowTwo seemore={seemore}>
-							{RowTwo.map((blog,index)=>{
+							{RowTwo.map((blog)=>{
 								return(
-									<SingleBlogBox key={index}>
-										<BlogImage image={blog.image}/>
-										<Title>{blog.Title} #{index+5}</Title>
-										<BlogText>{blog.info}</BlogText>
+									<SingleBlogBox key={blog.id} >
+										<SingleBlogRowTwo id={blog.id} image={blog.image} title={blog.Title} info={blog.info}/>
 									</SingleBlogBox>
 									)
 							})}

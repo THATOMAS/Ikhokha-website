@@ -9,6 +9,7 @@ const HomePageContainer = styled.article`
 height:100vh;
 // background:red;
 scroll-snap-align: start;
+
 `
 
 const PageWrapper = styled.div`
