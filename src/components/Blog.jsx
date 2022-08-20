@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import styled from "styled-components"
 import {Logos} from "./Logos"
-import {RowOne,RowTwo} from "./BlogData"
+import {RowOne,RowTwo} from "./Data"
 import {SingleBlogRowOne,SingleBlogRowTwo} from "./SingleBlog"
 
 const BlogContainer = styled.article`
@@ -10,6 +10,7 @@ height:100vh;
 scroll-snap-align: start;
 display:flex;
 // opacity:0.45;
+// opacity: ${props=>props.show ? "0.35":"1"};
 `
 
 const PageWrapper = styled.div`
@@ -54,7 +55,7 @@ background-size:contain;
 background-repeat:no-repeat;
 background-position:center;
 
-;
+
 `
 
 const BlogBoxContainer = styled.div`
@@ -62,7 +63,7 @@ height:75%;
 width:100%;
 // background:yellow;
 display:flex;
-justify-content:center;
+justify-content:flex-start;
 align-items:center;
 flex-direction:column;
 `
@@ -112,21 +113,21 @@ const SingleBlogBox = styled.div`
 width:282px;
 height:fit-content;
 // background:red;
-margin:10px;
+margin-left:30px;
+margin-right:30px;
 display:flex;
 flex-direction:column;
 background: #FFFFFF 0% 0% no-repeat padding-box;
-box-shadow: 0px 2px 16px #00000029;
+
 border-radius: 4px;
 opacity: 1;
 cursor:pointer;
 transition: 0.1s ease-in-out all;
+position:relative;
 
 // &:hover{
 // 	transform:scale(1.1)
-}
-
-
+// }
 
 
 `
