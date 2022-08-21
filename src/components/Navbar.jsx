@@ -17,6 +17,8 @@ display:flex;
 align-items:center;
 justify-content:center;
 position:fixed;
+background:white;
+z-index:1;
 `
 
 const LinkContainer = styled.div`
