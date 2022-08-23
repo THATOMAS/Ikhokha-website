@@ -66,7 +66,7 @@ display:flex;
 height:100%;
 align-items:center;
 justify-content:flex-start;
-background:#182333;
+background:${props=>props.color};
 flex:1;
 flex-direction:column;
 `
@@ -135,15 +135,16 @@ const SendUsEmailBox = styled.div`
 margin-top:0px;
 height:75vh;
 width:100%;
-background:#00000029;
+// background:#00000029;
 display:flex;
 align-items:center;
 justify-content:space-evenly;
-flex-direction:column;
+flex-direction:row;
+background:teal;
 `
 
 
-const HeadingTwo =styled.h1`
+const MessageUs =styled.h3`
 font-family:Montserrat;
 font-size:45px;
 // font-weight:bold;
@@ -152,14 +153,22 @@ margin-top:-10px;
 `
 
 const EmailForm = styled.form`
-height:450px;
-width:900px;
-border-radius:10px;
+height:100%;
+width:50%;
+// border-radius:3px;
 display:flex;
 flex-direction:column;
 background:white;
 justify-content:center;
 align-items:center;
+`
+
+const MapContainer = styled.iframe`
+height:100%;
+width:50%;
+// background:blue;
+border:0;
+frameborder=0;
 `
 
 const Input = styled.input`
@@ -192,23 +201,49 @@ margin-bottom:2px;
 
 `
 
-const Button = styled.button`
-height:50px;
-width:150px;
+
+const TextArea = styled.textarea`
+font-size:25px;
+// font-weight:bolder;
+font-family:Montserrat;
+color:black;
+width:90%;
+height:200px;
+border-radius:5px;
+border: 1px solid #3D86BF;
+box-shadow: 0px 2px 16px #00000029;
 margin-top:10px;
 margin-bottom:10px;
+rows:8;
+`
+
+const Button = styled.button`
+height:90px;
+width:90px;
+margin-top:20px;
+margin-bottom:10px;
 border:1px solid #A0CC4D;
+border-radius:50%;
 background:#A0CC4D;
 box-shadow: 0px 2px 16px #A0CC4D;
 cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+
+&:hover{
+	transform:scale(1.1)
+}
 `
+const Send = require("../assets/send.png")
 
-const ButtonText = styled.p`
-font-size:30px;
-font-weight:bold;
-font-family:Montserrat;
-color:black;
-
+const ButtonSend = styled.div`
+height:50%;
+width:50%;
+background:url(${Send});
+background-repeat:no-repeat;
+background-position:center;
+background-size:contain;
 `
 
 const Contact = ({titleRef4})=>{
@@ -225,7 +260,7 @@ const Contact = ({titleRef4})=>{
 					<InfoBoxes>{
 						ContactInfo.map((info,index)=>{
 							return(
-					<SingleBox key={index}>
+					<SingleBox key={index} color={info.color}>
 						<IconBox>
 							<IconImage image={info.image}/>
 						</IconBox>
@@ -241,16 +276,17 @@ const Contact = ({titleRef4})=>{
 					</InfoBoxes>
 				</GetInTouchBox>
 				<SendUsEmailBox>
-					<HeadingTwo >
-						MESSAGE US
-					</HeadingTwo>
+				<MapContainer src="https://maps.google.com/maps?q=christiana%20&t=&z=11&ie=UTF8&iwloc=&output=embed"/>
 					<EmailForm>
+					<MessageUs >
+						MESSAGE US
+					</MessageUs>
 						<Input placeholder=" First Name* "/>
 						<Input placeholder=" Last Name* "/>
 						<Input placeholder=" Email* "/>
 						<Input placeholder=" Phone Number "/>
-						<Input type="text" placeholder=" What can we do for you ?  "/>
-						<Button type="submit"><ButtonText>SEND</ButtonText></Button>																
+						<TextArea type="text" placeholder=" What can we do for you ?  "/>
+						<Button type="submit"><ButtonSend/></Button>																
 
 					</EmailForm>
 				</SendUsEmailBox>
@@ -260,3 +296,6 @@ const Contact = ({titleRef4})=>{
 }
 
 export default Contact;
+
+
+{/*<div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123movies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">how to add a map to wordpress</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>*/}

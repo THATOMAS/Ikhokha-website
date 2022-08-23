@@ -63,9 +63,10 @@ height:75%;
 width:100%;
 // background:yellow;
 display:flex;
-justify-content:flex-start;
+justify-content:${props=>props.seemore? "flex-start" : "center"};
 align-items:center;
 flex-direction:column;
+;
 `
 const ReadMoreButton = styled.div`
 height:38px;
@@ -193,7 +194,7 @@ const Blog = ({titleRef3})=>{
 							})}
 					</LogoBox>
 				</TrustedByBox>
-				<BlogBoxContainer>
+				<BlogBoxContainer seemore={seemore}>
 					<BlogBoxWrapper>
 						<BlogBoxRowOne>
 							{RowOne.map((blog)=>{
