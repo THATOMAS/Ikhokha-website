@@ -23,8 +23,6 @@ flex-direction:row;
 
 
 ${Mobile({
-	height:'100vh',
-	width:'100vw',
 	display:'flex',
 	flexDirection:'column',
 })}
@@ -38,6 +36,13 @@ display:flex;
 flex-direction:column;
 justify-content:flex-start;
 // background:green;
+
+
+${Mobile({
+width:'100%',
+alignItems:'center',
+
+})}
 
 
 `
@@ -69,7 +74,7 @@ color:#394E5D;
 margin-bottom:19px;
 
 ${Mobile({
-fontSize:'32px'})}
+fontSize:'28px'})}
 
 
 `
@@ -79,6 +84,14 @@ font-family:Montserrat;
 font-size:27px;
 color:#394E5D;
 line-height:27px;
+
+
+${Mobile({
+fontSize:'18px',
+marginLeft:'5px'
+})}
+
+
 `
 
 const ImageBox = styled.div`
@@ -88,11 +101,11 @@ display:flex;
 align-items:flex-start;
 justify-content:center;
 flex-direction:column;
-background:blue;
+// background:blue;
 
 ${Mobile({
 height:'50vh',
-width:'50vw'
+width:'100vw'
 })}
 
 
@@ -100,7 +113,16 @@ width:'50vw'
 const Image = styled.div`
 height:371px;
 width:384px;
-background:url(${image})
+background:url(${image});
+background-size:cover;
+background-position:center;
+
+${Mobile({
+height:'100%',
+width:'100%',
+})}
+
+
 `
 
 const HomePage = ({titleRef1})=>{

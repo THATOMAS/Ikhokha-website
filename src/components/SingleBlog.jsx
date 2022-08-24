@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from "react"
 import styled from "styled-components"
 import "../index.css"
+import {Mobile} from "../Responsive"
+
 
 const CloseLogo = require("../assets/close.png")
 
@@ -19,6 +21,11 @@ background-size:cover;
 background-position:center;
 
 
+${Mobile({
+display:'none'
+})}
+
+
 `
 
 
@@ -32,7 +39,9 @@ transition:0.5s ease-in-out all;
 flex-direction:column;
 box-shadow: 0px 2px 16px #00000029;
 
-
+${Mobile({
+	transform:'scale(1)'
+})}
 
 `
 

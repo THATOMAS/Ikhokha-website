@@ -16,13 +16,16 @@ export const RowOne = [{
 	image:require("../assets/dustin.png"),
 	Title : "Blog Title",
 	info:"Blog excerpt - first lines - for approx two lines",
-	id:3}
+	id:3,
+	responsive:'false'
+}
 ,
 {
 	image:require("../assets/dustin.png"),
 	Title : "Blog Title",
 	info:"Blog excerpt - first lines - for approx two lines",
-	id:4
+	id:4,
+	responsive:'false'
 }
 
 ]
@@ -45,14 +48,16 @@ export const RowTwo = [{
 	image:require("../assets/dustin.png"),
 	Title : "Blog Title",
 	info:"Blog excerpt - first lines - for approx two lines",
-	id:7
+	id:7,
+	responsive:'false'
 }
 ,
 {
 	image:require("../assets/dustin.png"),
 	Title : "Blog Title",
 	info:"Blog excerpt - first lines - for approx two lines",
-	id:8
+	id:8,
+	responsive:'false'
 }
 
 ]

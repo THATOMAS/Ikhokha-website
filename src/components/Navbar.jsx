@@ -24,7 +24,7 @@ width: 100%;
 height: 60px;
 box-shadow: 0px 2px 12px #00000029;
 opacity:1;
-// background:red;
+background:red;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -168,7 +168,7 @@ justify-content:center;
 position:fixed;
 z-index:1;
 margin-left:0px;
-
+background:white;
 ${Mobile({
 	display:'flex'
 })}

@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-
+import {Mobile} from "../Responsive"
 
 const image = require('../assets/56217.png')
 
@@ -28,12 +28,23 @@ margin-top:120px;
 display:flex;
 align-items:center;
 justify-content:center;
+
+${Mobile({
+	width:'100vw'
+})}
 `
 
 const Heading = styled.h1`
 font-size:32px;
 font-family:Montserrat,Sans-serif;
-color:#394E5D
+color:#394E5D;
+
+${Mobile({
+	fontSize:'26px',
+marginLeft:'5px',
+marginRight:'10px'
+})}
+
 
 `
 
@@ -45,6 +56,13 @@ display:flex;
 margin-top:60px;
 align-items:center;
 justify-content:center;
+
+${Mobile({
+	height:'100%',
+	justifyContent:'flex-start'
+})}
+
+
 `
 
 
@@ -56,6 +74,13 @@ align-items:center;
 justify-content:center;
 flex-direction:column;
 // background:blue;
+
+
+${Mobile({
+	display:'none'
+})}
+
+
 `
 const Image = styled.div`
 height:370px;
@@ -73,6 +98,17 @@ flex-direction:column;
 // background:red;
 align-items:flex-start;
 justify-content:flex-start;
+
+
+${Mobile({
+height:'100%',
+width:'100%',
+marginLeft:'10px',
+marginRight:'10px'
+})}
+
+
+
 `
 const HeaderBox = styled.div`
 height:24px;
@@ -92,7 +128,16 @@ const TextBox = styled.div`
 height:220px;
 width:525px;
 // background:green;
-margin-top:30px
+margin-top:30px;
+display:flex;
+
+${Mobile({
+height:'fit-content',
+width:'100%',
+})}
+
+
+
 `
 
 const Text = styled.p`

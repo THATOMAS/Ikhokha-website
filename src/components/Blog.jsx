@@ -12,7 +12,9 @@ display:flex;
 // opacity:0.45;
 // opacity: ${props=>props.show ? "0.35":"1"};
 
-
+${Mobile({
+	height:'fit-content'
+})}
 
 `
 
@@ -58,6 +60,10 @@ background-size:contain;
 background-repeat:no-repeat;
 background-position:center;
 
+${Mobile({
+	height:'50px',
+	width:'50px'
+})}
 
 `
 
@@ -84,6 +90,33 @@ display:flex;
 justify-content:center;
 align-items:center;
 margin-top:80px;
+
+
+${Mobile({
+	display:'none'
+})}
+
+`
+
+
+
+const MobileReadMoreButton = styled.div`
+height:38px;
+width:140px;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #3D86BF;
+border-radius: 32px;
+opacity: 1;
+cursor:pointer;
+margin-top:20px;
+display:none;
+justify-content:center;
+align-items:center;
+margin-top:80px;
+
+${Mobile({
+	display:'flex'
+})}
 `
 
 const ReadMoreText = styled.p`
@@ -110,6 +143,24 @@ margin-bottom:10px;
 display:flex;
 flex-direction:row;
 flex-wrap:no-wrap;
+${Mobile({
+	display:'none',
+})}
+`
+
+const MobileBlogBoxRowOne = styled.div`
+height:fit-content;
+width:100%;
+// background:blue;
+margin-bottom:10px;
+display:none;
+flex-direction:row;
+flex-wrap:no-wrap;
+${Mobile({
+	display:'flex',
+	flexDirection:'column',
+	flexWrap:'wrap'
+})}
 `
 
 
@@ -132,6 +183,11 @@ position:relative;
 // &:hover{
 // 	transform:scale(1.1)
 // }
+
+${Mobile({
+width: '334px',
+height: '267px',})}
+
 
 
 `
@@ -171,17 +227,40 @@ margin-bottom:10px;
 display:${props=>props.seemore ? "flex" : "none"};
 flex-direction:row;
 flex-wrap:no-wrap;
+${Mobile({
+	display:'none'
+})}
+
 `
 
 
 const Blog = ({titleRef3})=>{
 
+	const MobileArray = RowOne.slice(0,2)
+	const [RowData,setRowData] = useState(MobileArray)
+
+
+
 	const [seemore,setSeemore] = useState(true)
+	
 	const readmore = ()=>{
 		setSeemore(!seemore)
 	}
 
+	const MobileReadmore = ()=>{
+		
+		if(seemore){		
+		setRowData(RowOne)
+		setSeemore(!seemore)
+		}
+		else if(!seemore){
+			setRowData(MobileArray)
+			setSeemore(true)
+		}
+	return
+	}
 
+	
  
 
 	return(
@@ -208,6 +287,18 @@ const Blog = ({titleRef3})=>{
 									)
 							})}
 						</BlogBoxRowOne>
+
+
+						<MobileBlogBoxRowOne>
+							{RowData.map((blog)=>{
+								return(
+									<SingleBlogBox key={blog.id} >
+										<SingleBlogRowOne id={blog.id} image={blog.image} title={blog.Title} info={blog.info}/>
+									</SingleBlogBox>
+									)
+							})}
+						</MobileBlogBoxRowOne>
+
 						<BlogBoxRowTwo seemore={seemore}>
 							{RowTwo.map((blog)=>{
 								return(
@@ -218,11 +309,19 @@ const Blog = ({titleRef3})=>{
 							})}
 						</BlogBoxRowTwo >
 					</BlogBoxWrapper>
-					<ReadMoreButton onClick={()=>readmore()}>
+					<ReadMoreButton onClick={()=>readmore()} >
 						<ReadMoreText>
 							{seemore ? "See Less" : "Read More"}
 						</ReadMoreText>
-					</ReadMoreButton>
+					</ReadMoreButton >
+
+
+					<MobileReadMoreButton onClick={()=>MobileReadmore()} >
+						<ReadMoreText>
+							{seemore ? "Read More" : "See Less"}
+						</ReadMoreText>
+					</MobileReadMoreButton >
+
 				</BlogBoxContainer>
 			</PageWrapper>
 		</BlogContainer>
