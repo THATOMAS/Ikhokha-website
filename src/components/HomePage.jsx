@@ -1,31 +1,34 @@
 import React from "react"
 import Navbar from "./Navbar"
 import styled from "styled-components"
-
+import {Mobile} from "../Responsive"
 
 const image = require('../assets/56256.png')
 
 const HomePageContainer = styled.article`
 height:100vh;
-// background:red;
+width:100vw;
+// background:green;
 scroll-snap-align: start;
 
 `
 
 const PageWrapper = styled.div`
-height:100%;
-width:100%;
+height:100vh;
+width:100vw;
 display:flex;
 align-items:center;
-`
-const PageInfoBox = styled.div`
-height:75%;
-width:60%;
-display:flex;
-flex-direction:column;
-// background:red;
-align-items:center;
-justify-content:center
+flex-direction:row;
+// background:teal;
+
+
+${Mobile({
+	height:'100vh',
+	width:'100vw',
+	display:'flex',
+	flexDirection:'column',
+})}
+
 `
 
 const PageInfoBoxWrapper = styled.div`
@@ -34,6 +37,27 @@ height:fit-content;
 display:flex;
 flex-direction:column;
 justify-content:flex-start;
+// background:green;
+
+
+`
+
+
+const PageInfoBox = styled.div`
+height:75%;
+width:60%;
+display:flex;
+flex-direction:column;
+// background:red;
+align-items:center;
+justify-content:center;
+
+${Mobile({
+marginTop:'57px',
+height:'50%',
+width:'100vw',
+})}
+
 `
 
 const Heading = styled.h1`
@@ -43,6 +67,11 @@ margin-bottom:57px;
 font-weight:600;
 color:#394E5D;
 margin-bottom:19px;
+
+${Mobile({
+fontSize:'32px'})}
+
+
 `
 
 const Info = styled.p`
@@ -59,7 +88,14 @@ display:flex;
 align-items:flex-start;
 justify-content:center;
 flex-direction:column;
-// background:blue;
+background:blue;
+
+${Mobile({
+height:'50vh',
+width:'50vw'
+})}
+
+
 `
 const Image = styled.div`
 height:371px;

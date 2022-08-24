@@ -3,7 +3,7 @@ import styled from "styled-components"
 import {Logos} from "./Logos"
 import {RowOne,RowTwo} from "./Data"
 import {SingleBlogRowOne,SingleBlogRowTwo} from "./SingleBlog"
-
+import {Mobile} from "../Responsive"
 const BlogContainer = styled.article`
 height:100vh;
 // background:blue;
@@ -11,6 +11,9 @@ scroll-snap-align: start;
 display:flex;
 // opacity:0.45;
 // opacity: ${props=>props.show ? "0.35":"1"};
+
+
+
 `
 
 const PageWrapper = styled.div`

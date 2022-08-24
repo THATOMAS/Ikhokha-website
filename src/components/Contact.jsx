@@ -246,6 +246,8 @@ background-position:center;
 background-size:contain;
 `
 
+
+
 const Contact = ({titleRef4})=>{
 	return(
 		<ContactPageContainer ref={titleRef4}>
