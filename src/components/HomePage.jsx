@@ -46,8 +46,9 @@ justify-content:flex-start;
 
 
 ${Mobile({
-width:'100%',
+width:'90vw',
 alignItems:'center',
+justifyContent:'center',
 
 })}
 
@@ -57,7 +58,7 @@ alignItems:'center',
 
 const PageInfoBox = styled.div`
 height:75%;
-width:60%;
+width:50%;
 display:flex;
 flex-direction:column;
 // background:red;
@@ -66,7 +67,7 @@ justify-content:center;
 
 ${Mobile({
 marginTop:'57px',
-height:'50%',
+height:'40%',
 width:'100vw',
 })}
 
@@ -103,16 +104,16 @@ marginLeft:'5px'
 
 const ImageBox = styled.div`
 height:75%;
-width:40%;
+width:50%;
 display:flex;
-align-items:flex-start;
+align-items:center;
 justify-content:center;
 flex-direction:column;
 // background:blue;
 
 ${Mobile({
-height:'50vh',
-width:'100vw'
+height:'45vh',
+width:'80vw'
 })}
 
 
@@ -121,8 +122,9 @@ const Image = styled.div`
 height:371px;
 width:384px;
 background:url(${image});
-background-size:cover;
+background-size:contain;
 background-position:center;
+background-repeat:no-repeat;
 
 ${Mobile({
 height:'100%',

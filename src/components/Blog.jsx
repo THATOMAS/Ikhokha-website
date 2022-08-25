@@ -1,11 +1,11 @@
-import React,{useState} from "react"
+import React,{useState,useEffect} from "react"
 import styled from "styled-components"
 import {Logos} from "./Logos"
 import {RowOne,RowTwo} from "./Data"
 import {SingleBlogRowOne,SingleBlogRowTwo} from "./SingleBlog"
 import {Mobile} from "../Responsive"
-
-
+import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
+import Slider from "react-slick";
 
 const BlogContainer = styled.article`
 height:${props=>props.show ? "100vh":"fit-content"};;
@@ -23,48 +23,43 @@ width:100%;
 // background:teal;
 display:flex;
 flex-direction:column;
+${Mobile({
+	marginTop:'30px'
+})}
+
 `
 
 const TrustedByBox = styled.div`
 height:25%;
-width:100%;
+width:100vw;
 display:flex;
 flex-direction:column;
 // background:yellow;
 margin-top:60px;
 align-items:center;
 justify-content:center;
+
+${Mobile({
+	marginBottom:'30px'
+})}
+
+
 `
 const TrustedBy = styled.h1`
 font-size:30px;
 font-family:Montserrat;
-color:#394E5D
+color:#394E5D;
 
-`
-
-const LogoBox = styled.div`
-height:145px;
-width:100%;
-background: #F5F8FA;
-display:flex;
-justify-content:space-evenly;
-align-items:center;
-`
-
-const Logo = styled.div`
-height:100px;
-width:100px;
-background: url(${props=>props.image});
-background-size:contain;
-background-repeat:no-repeat;
-background-position:center;
 
 ${Mobile({
-	height:'50px',
-	width:'50px'
+	marginBottom:'30px'
 })}
 
+
 `
+
+// 
+
 
 const BlogBoxContainer = styled.div`
 height:75%;
@@ -166,9 +161,8 @@ ${Mobile({
 const SingleBlogBox = styled.div`
 width:282px;
 height:fit-content;
-// background:red;
-margin-left:30px;
-margin-right:30px;
+background:red;
+margin:10px;
 display:flex;
 flex-direction:column;
 background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -233,21 +227,130 @@ ${Mobile({
 `
 
 
+
+
+const LogoBoxContainer = styled.div`
+height:145px;
+width:100%;
+background: #F5F8FA;
+display:flex;
+justify-content:space-evenly;
+align-items:center;
+position:relative;
+`
+
+const LogoBoxWrapper = styled.div`
+height:100%;
+width:100%;
+background:orange;
+display:flex;
+align-items:center;
+justify-content:space-evenly;
+position:relative;
+${Mobile({
+width:'fit-content'
+})}
+`
+
+const Logo = styled.div`
+height:100px;
+width:100px;
+background: url(${props=>props.image});
+background-size:contain;
+background-repeat:no-repeat;
+background-position:center;
+margin-left:20px;
+margin-right:20px;
+${Mobile({
+	marginLeft:'15px',
+marginRight:'15px',
+height:'50px',
+	width:'50px',
+
+})}
+
+`
+
+const LeftButton = styled.button`
+  height:28px;
+  width:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 50%;
+  cursor: pointer;
+background:#182333;
+
+&:hover{
+	background:#182333;
+
+}
+
+&:focus{
+	background:#182333;
+
+}
+
+${Mobile({
+	display:'flex'
+})}
+
+`
+
+
+const RightButton = styled.button`
+  height:28px;
+  width:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 50%;
+  cursor: pointer;
+background:#182333;
+
+&:hover{
+	background:#182333;
+
+}
+
+&:focus{
+	background:#182333;
+
+}
+
+${Mobile({
+	display:'flex'
+})}
+
+`
+
+const Right = ()=>{
+	return(
+		<AiFillCaretRight/>)
+}
+
+const settings = {
+      dots: true,
+      infinite: true,
+      speed: 750,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      
+      nextArrow:<RightButton />,
+      prevArrow:<LeftButton/>,
+    };
+
+
 const Blog = ({ref3})=>{
 
 	const MobileArray = RowOne.slice(0,2)
 	const [RowData,setRowData] = useState(MobileArray)
-
-
-
 	const [seemore,setSeemore] = useState(true)
-	
 	const readmore = ()=>{
 		setSeemore(!seemore)
 	}
 
 	const MobileReadmore = ()=>{
-		
 		if(seemore){		
 		setRowData(RowOne)
 		setSeemore(!seemore)
@@ -259,9 +362,6 @@ const Blog = ({ref3})=>{
 	return
 	}
 
-	
- 
-
 	return(
 		<BlogContainer ref={ref3}>
 			<PageWrapper>
@@ -269,11 +369,13 @@ const Blog = ({ref3})=>{
 					<TrustedBy>
 						We Are Trusted By
 					</TrustedBy>
-					<LogoBox>
-							{Logos.map((singlelogo,index)=>{
-								return(<Logo key={index} image={singlelogo.img}/>)
-							})}
-					</LogoBox>
+					<LogoBoxContainer>
+								<Slider {...settings} style={{height:'fit-content',width:'80%',display:'flex',backgroundColour:'red'}}>
+									{Logos.map((singlelogo,index)=>{
+										return(<Logo key={index} image={singlelogo.img} />)
+									})}
+								</Slider>
+					</LogoBoxContainer>
 				</TrustedByBox>
 				<BlogBoxContainer seemore={seemore}>
 					<BlogBoxWrapper>

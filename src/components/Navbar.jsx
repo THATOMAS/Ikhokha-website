@@ -24,7 +24,7 @@ width: 100%;
 height: 60px;
 box-shadow: 0px 2px 12px #00000029;
 opacity:1;
-background:red;
+// background:red;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -158,7 +158,7 @@ const MobileNavbarContainer = styled.div`
 top: 0px;
 left: 0px;
 width: 100%;
-height: 10vh;
+height: 57px;
 box-shadow: 0px 2px 12px #00000029;
 opacity:1;
 display:none;
@@ -180,7 +180,6 @@ ${Mobile({
 const CloseAndOpenBox = styled.div`
 height:fit-content;
 width:fit-content;
-top: 23px;
 left: 53px;
 position:fixed;
 height:20px;
@@ -220,9 +219,8 @@ height:41px;
 width:47px;
 display:none;
 justify-self:center;
-top: 13px;
-left: 171px;
-position:static;
+left: 50%;
+position:fixed;
 height:40px;
 width:47px;
 ${Mobile({

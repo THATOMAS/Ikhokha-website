@@ -19,7 +19,7 @@ body {
 
 
 @media only screen and (width:414px){
-  body{
+  .Carousel{
     overflow: none;
   }
 }
@@ -29,3 +29,7 @@ code {
     monospace;
 }
 
+
+.Theslider{
+  display: none;
+}

@@ -70,27 +70,27 @@ const ref2 = React.createRef()
 const ref3 = React.createRef()
 const ref4 = React.createRef()
 
-const toHome = (number) =>{
+const toHome = () =>{
     ref1.current.scrollIntoView({behavior:"smooth"});
-    return 55
+    return 
   }
 
-  const toProducts = (number)=> {
+  const toProducts = ()=> {
     ref2.current.scrollIntoView({behavior:"smooth"});
-    return 100
+    return
 
   }
 
 
-  const toBlog =(number)=> {
+  const toBlog =()=> {
     ref3.current.scrollIntoView({behavior:"smooth"});
-    return 150
+    return 
   }
 
 
-  const toContact =(number) => {
+  const toContact =() => {
      ref4.current.scrollIntoView({behavior:"smooth"});
-    return 200
+    return 
   }
 
 
