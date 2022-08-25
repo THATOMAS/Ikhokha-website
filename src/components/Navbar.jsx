@@ -1,5 +1,5 @@
 import React,{useState} from "react"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components";
 import HomePage from "./HomePage"
 import Blog from "./Blog"
 import {Mobile} from "../Responsive.js"
@@ -66,8 +66,7 @@ opacity:0;
 transition:1.5s ease;
 
 ${Mobile({
-	display:'none'
-})}
+display:'none',})}
 
 
 
@@ -159,7 +158,7 @@ const MobileNavbarContainer = styled.div`
 top: 0px;
 left: 0px;
 width: 100%;
-height: 57px;
+height: 10vh;
 box-shadow: 0px 2px 12px #00000029;
 opacity:1;
 display:none;
@@ -274,19 +273,42 @@ ${Mobile({
 
 const MobileLinkBox = styled.div`
 display:flex;
-flex-direction:column;
-align-items:flex-start;
-justify-content:center;
+flex-direction:row;
+align-items:center;
+justify-content:flex-start;
 // background:orange;
 height:100px;
-width:128px;
+width:50%;
 margin-bottom:31px;
 display:none;
 margin-left:63px;
+position:static;
+
 ${Mobile({
 	display:'flex',
 })}
 
+
+`
+
+
+
+const MobileActive = styled.div`
+height:10px;
+width:10px;
+background:#3D86BF;
+border-radius:50%;
+display:none;
+position:relative;
+right:15px;
+border-radius:50%;
+left:50px;
+top:${props=>props.top}px;
+// top:185px;
+
+${Mobile({
+display:'flex',
+})}
 
 
 `
@@ -294,14 +316,50 @@ ${Mobile({
 
 
 
-
-
 const Navbar = ({toHome,toProducts,toBlog,toContact})=>{
 
-const [show,setShow] = useState(false)
 
-const Toggle = ()=>{
+const [show,setShow] = useState(false)
+const [top,setTop] = useState('55')
+
+
+const MobileLinks = [{
+	parameter : "#HOME",
+	name:'Home',
+	id:1,
+},{
+	parameter : "#PRODUCTS",
+	name:'Products',
+	id:2,
+},{
+	parameter : "#BLOG",
+	name:'Blog',
+	id:3,
+},{
+	parameter : "#CONTACT",
+	name:'Contact',
+	id:4}]
+
+
+
+const Toggle = (id)=>{
 	setShow(!show)
+	if(id === 1){
+		setTop("55")
+		toHome()
+	}
+	else if(id === 2){
+		toProducts()
+		setTop("185")
+	}
+	else if(id === 3){
+		toBlog()
+		setTop("315")
+	}
+	else if(id === 4){
+		toContact()
+		setTop("450")
+	}
 }
 
 	return(<NavbarArticle>
@@ -348,42 +406,57 @@ const Toggle = ()=>{
 			</CloseAndOpenBox>
 			
 			<LogoBoxTwo onClick={()=>toHome()}>
-				<MobileLogo href="#Home"/>
+				<MobileLogo href="#Home" />
 			</LogoBoxTwo>
 		</MobileNavbarContainer>
 
 
 		<DropDownMenu style ={{display:`${show? "flex":"none"}`}}>
-			<MobileLinkBox  onClick={()=>toHome()}>
-					<LinkText href="#Home"  onClick={()=>Toggle()} >
-						Home
-					</LinkText>
-					<Active />
-				</MobileLinkBox>
+			<MobileActive top={top}/>
+			{MobileLinks.map(({...singleLink})=>{
 
-				<MobileLinkBox onClick={()=>toProducts()}>
-					<LinkText href="#Products" onClick={()=>Toggle()}>
-						Products
-					</LinkText>
-					<Active />
-				</MobileLinkBox>
-				
-
-				<MobileLinkBox onClick={()=>toBlog()}>
-					<LinkText href="#Blog" onClick={()=>Toggle()}>
-						Blog
-					</LinkText>
-					<Active />
-				</MobileLinkBox>
-
-				<MobileLinkBox onClick={()=>toContact()}>
-					<LinkText href="#Contact" onClick={()=>Toggle()}>
-						Contact
-					</LinkText>
-					<Active/>
-				</MobileLinkBox>
+				const {id,name,parameter,toWhere} = singleLink
+				return(				
+					<MobileLinkBox  key={singleLink.id} >
+							<LinkText href={parameter} onClick={()=>Toggle(id)} >
+								{name}
+							</LinkText>
+					</MobileLinkBox>)	
+			})}
 		</DropDownMenu>
 </NavbarArticle>)
 }
 
 export default Navbar;
+
+
+
+
+
+{/*
+			<MobileLinkBox  onClick={()=>toHome()}   >
+					<LinkText href="#Home" onClick={(id)=>Toggle(id)} >
+						Home
+					</LinkText>
+			</MobileLinkBox>
+
+				<MobileLinkBox  onClick={()=>toProducts()} >
+					<LinkText href="#Products" onClick={(id)=>Toggle(id)}>
+						Products
+					</LinkText>
+				</MobileLinkBox>
+				
+
+				<MobileLinkBox onClick={()=>toBlog()}  >
+					<LinkText href="#Blog" id={"3"} onClick={(id)=>Toggle(id)}>
+						Blog
+					</LinkText>
+					
+				</MobileLinkBox>
+
+				<MobileLinkBox onClick={()=>toContact()}  >
+					<LinkText href="#Contact" id={"4"} onClick={(id)=>Toggle(id)}>
+						Contact
+					</LinkText>
+					
+				</MobileLinkBox>*/}

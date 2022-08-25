@@ -8,7 +8,12 @@ const image = require('../assets/56217.png')
 const ProductsPageContainer = styled.article`
 height:100vh;
 // background:blue;
-scroll-snap-align: start;
+scroll-snap-align: center;
+
+${Mobile({
+height:"fit-content"
+	})}
+
 `
 
 
@@ -148,9 +153,9 @@ color:#394E5D;
 
 `
 
-const Products = ({titleRef2})=>{
+const Products = ({ref2})=>{
 	return(
-		<ProductsPageContainer ref={titleRef2}>
+		<ProductsPageContainer ref={ref2}>
 			<PageWrapper>
 				<HeadingBox>
 					<Heading>

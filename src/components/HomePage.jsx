@@ -11,6 +11,12 @@ width:100vw;
 // background:green;
 scroll-snap-align: start;
 
+
+${Mobile({
+height:'90vh'
+	})}
+
+
 `
 
 const PageWrapper = styled.div`
@@ -25,6 +31,7 @@ flex-direction:row;
 ${Mobile({
 	display:'flex',
 	flexDirection:'column',
+	alignSelf:'center'
 })}
 
 `
@@ -125,9 +132,9 @@ width:'100%',
 
 `
 
-const HomePage = ({titleRef1})=>{
+const HomePage = ({ref1})=>{
 	return(
-		<HomePageContainer ref={titleRef1}>
+		<HomePageContainer ref={ref1}>
 			<PageWrapper>
 				<PageInfoBox>
 					<PageInfoBoxWrapper>

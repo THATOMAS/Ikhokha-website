@@ -4,17 +4,16 @@ import {Logos} from "./Logos"
 import {RowOne,RowTwo} from "./Data"
 import {SingleBlogRowOne,SingleBlogRowTwo} from "./SingleBlog"
 import {Mobile} from "../Responsive"
+
+
+
 const BlogContainer = styled.article`
-height:100vh;
+height:${props=>props.show ? "100vh":"fit-content"};;
 // background:blue;
 scroll-snap-align: start;
 display:flex;
 // opacity:0.45;
 // opacity: ${props=>props.show ? "0.35":"1"};
-
-${Mobile({
-	height:'fit-content'
-})}
 
 `
 
@@ -112,7 +111,7 @@ margin-top:20px;
 display:none;
 justify-content:center;
 align-items:center;
-margin-top:80px;
+margin-top:50px;
 
 ${Mobile({
 	display:'flex'
@@ -234,7 +233,7 @@ ${Mobile({
 `
 
 
-const Blog = ({titleRef3})=>{
+const Blog = ({ref3})=>{
 
 	const MobileArray = RowOne.slice(0,2)
 	const [RowData,setRowData] = useState(MobileArray)
@@ -264,7 +263,7 @@ const Blog = ({titleRef3})=>{
  
 
 	return(
-		<BlogContainer ref={titleRef3}>
+		<BlogContainer ref={ref3}>
 			<PageWrapper>
 				<TrustedByBox>
 					<TrustedBy>

@@ -5,7 +5,7 @@ import HomePage from "./components/HomePage"
 import Products from "./components/Products"
 import Blog from "./components/Blog"
 import Contact from "./components/Contact"
-
+import {Mobile} from './Responsive'
 
 const LogoIcon = require("./assets/Logo.png")
 
@@ -32,6 +32,12 @@ margin-left:50px;
 display:flex;
 align-items:center;
 justify-content:space-evenly;
+
+${Mobile({
+  marginLeft:'0px',
+  width:'100vw',
+})}
+
 `
 
 const RightsIcon = require('./assets/AllRights.png')
@@ -53,39 +59,50 @@ opacity: 1;
 
 `
 
-const App = ()=>{
-
-const titleRef1 = useRef();
-const titleRef2 = useRef();
-const titleRef3 = useRef();
-const titleRef4 = useRef();
 
 
-  const toHome = () =>{
-    titleRef1.current.scrollIntoView({behavior:"smooth"});
+
+const App = React.forwardRef((props,ref)=>{
+
+
+const ref1 = React.createRef()
+const ref2 = React.createRef()
+const ref3 = React.createRef()
+const ref4 = React.createRef()
+
+const toHome = (number) =>{
+    ref1.current.scrollIntoView({behavior:"smooth"});
+    return 55
   }
 
-  const toProducts = ()=> {
-    titleRef2.current.scrollIntoView({behavior:"smooth"});
+  const toProducts = (number)=> {
+    ref2.current.scrollIntoView({behavior:"smooth"});
+    return 100
+
   }
 
 
-  const toBlog =()=> {
-    titleRef3.current.scrollIntoView({behavior:"smooth"});
+  const toBlog =(number)=> {
+    ref3.current.scrollIntoView({behavior:"smooth"});
+    return 150
   }
 
 
-  const toContact =() => {
-     titleRef4.current.scrollIntoView({behavior:"smooth"});
+  const toContact =(number) => {
+     ref4.current.scrollIntoView({behavior:"smooth"});
+    return 200
   }
+
+
+  
 
 	return(
 		<WebPage>
 			<Navbar toHome={toHome} toProducts={toProducts} toBlog={toBlog} toContact={toContact} />
-			<HomePage ref ={titleRef1} titleRef1={titleRef1}/>
-			<Products ref={titleRef2} titleRef2={titleRef2}/>
-			<Blog ref={titleRef3} titleRef3={titleRef3}/>
-			<Contact ref={titleRef4} titleRef4={titleRef4}/>
+			<HomePage ref1 ={ref1}/>
+			<Products ref2={ref2} />
+			<Blog ref3={ref3} />
+			<Contact ref4={ref4} />
       <AllRightsContainer>
         <AllRightsWrapper>
           <AllRightsLogo/>
@@ -97,5 +114,6 @@ const titleRef4 = useRef();
 		)
 }
 
+)
 export default App;
 

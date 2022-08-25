@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import {ContactInfo} from "./Data"
+import {Mobile} from '../Responsive'
+
 
 const ContactPageContainer = styled.article`
 height:fit-content;
@@ -25,6 +27,9 @@ background:#394E5D;
 display:flex;
 flex-direction:column;
 
+${Mobile({
+	height:'fit-content',
+})}
 
 `
 
@@ -37,6 +42,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
+
+${Mobile({
+	height:'100px'
+})}
+
+
 `
 
 const Heading =styled.h1`
@@ -44,6 +55,11 @@ font-family:Montserrat;
 font-size:25px;
 // font-weight:bold;
 color:white;
+${Mobile({
+	textAlign:'center'
+})}
+
+
 `
 
 const Underline = styled.div`
@@ -52,12 +68,24 @@ width:120px;
 border-radius:50%;
 background:#A0CC4D;
 margin-top:20px;
+${Mobile({
+	marginTop:'5px'
+})}
+
+
 `
 
 const InfoBoxes = styled.div`
 height:75%;
 display:flex;
 flex-direction:row;
+
+${Mobile({
+	height:'1000px',
+	marginTop:'0px',
+	flexDirection:'column'
+})}
+
 
 `
 
@@ -141,6 +169,13 @@ align-items:center;
 justify-content:space-evenly;
 flex-direction:row;
 background:teal;
+
+${Mobile({
+	height:'fit-content',
+	flexDirection:'column'
+})}
+
+
 `
 
 
@@ -150,6 +185,17 @@ font-size:45px;
 // font-weight:bold;
 color:#182333;
 margin-top:-10px;
+
+${Mobile({
+fontSize:'20px',
+marginTop:'30px',
+marginBottom:'15px',
+
+
+})}
+
+
+
 `
 
 const EmailForm = styled.form`
@@ -161,6 +207,13 @@ flex-direction:column;
 background:white;
 justify-content:center;
 align-items:center;
+
+${Mobile({
+height:'fit-content',
+width:'100%',
+})}
+
+
 `
 
 const MapContainer = styled.iframe`
@@ -169,6 +222,13 @@ width:50%;
 // background:blue;
 border:0;
 frameborder=0;
+
+
+${Mobile({
+	display:'none'
+})}
+
+
 `
 
 const Input = styled.input`
@@ -234,6 +294,15 @@ justify-content:center;
 &:hover{
 	transform:scale(1.1)
 }
+
+
+${Mobile({
+marginTop:'10px',
+marginBottom:'20px',
+height:'50px',
+width:'50px'
+})}
+
 `
 const Send = require("../assets/send.png")
 
@@ -248,9 +317,9 @@ background-size:contain;
 
 
 
-const Contact = ({titleRef4})=>{
+const Contact = ({ref4})=>{
 	return(
-		<ContactPageContainer ref={titleRef4}>
+		<ContactPageContainer ref={ref4}>
 			<ContactPageWrapper>
 				<GetInTouchBox>
 					<GetInTouchHeadingBox>

@@ -40,7 +40,8 @@ flex-direction:column;
 box-shadow: 0px 2px 16px #00000029;
 
 ${Mobile({
-	transform:'scale(1)'
+	transform:'scale(1)',
+	zIndex:'0',
 })}
 
 `
